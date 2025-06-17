@@ -1,481 +1,703 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Grade 11 NEB Computer Syllabus</title>
-<style>
-  /* Reset */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NEB Grade 12 - Computer Science Chapter 1 Overview</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f5f7fa;
-    color: #222;
-    display: flex;
-    min-height: 100vh;
-  }
-
-  /* Sidebar */
-  nav {
-    width: 280px;
-    background-color: #2c3e50;
-    color: #ecf0f1;
-    padding: 2rem 1.5rem;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    overflow-y: auto;
-  }
-
-  nav h1 {
-    font-weight: 700;
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-    color: #e67e22;
-    text-align: center;
-  }
-
-  nav ul {
-    list-style: none;
-  }
-
-  nav ul li {
-    margin-bottom: 1.2rem;
-  }
-
-  nav ul li a {
-    color: #ecf0f1;
-    text-decoration: none;
-    font-size: 1rem;
-    display: block;
-    padding: 0.4rem 0.6rem;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-
-  nav ul li a:hover,
-  nav ul li a.active {
-    background-color: #e67e22;
-    color: #fff;
-  }
-
-  /* Main content */
-  main {
-    flex: 1;
-    padding: 3rem 4rem;
-    overflow-y: auto;
-    max-width: 900px;
-  }
-
-  main h2 {
-    font-size: 2rem;
-    color: #34495e;
-    margin-bottom: 1.2rem;
-    border-bottom: 3px solid #e67e22;
-    padding-bottom: 0.3rem;
-  }
-
-  main p, main ul, main ol {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 1.6rem;
-    color: #555;
-  }
-
-  main ul {
-    padding-left: 1.3rem;
-  }
-
-  main ul li {
-    margin-bottom: 0.5rem;
-  }
-
-  /* Questions & answers */
-  .quiz {
-    background: #ecf0f1;
-    border-radius: 8px;
-    padding: 1.8rem 2rem;
-    margin-top: 2.5rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  }
-
-  .quiz h3 {
-    color: #e67e22;
-    margin-bottom: 1.2rem;
-    font-weight: 700;
-  }
-
-  .quiz ol {
-    padding-left: 1.3rem;
-  }
-
-  .quiz ol li {
-    margin-bottom: 1.4rem;
-  }
-
-  .answer {
-    margin-top: 0.5rem;
-    background: #dfe6e9;
-    border-left: 4px solid #e67e22;
-    padding: 0.6rem 1.2rem;
-    font-style: italic;
-    color: #2d3436;
-    border-radius: 4px;
-  }
-
-  /* Responsive */
-  @media (max-width: 900px) {
-    body {
-      flex-direction: column;
+    *, *::before, *::after {
+      box-sizing: border-box;
     }
-    nav {
-      width: 100%;
-      height: auto;
-      position: relative;
-      padding: 1rem 1rem 0.5rem 1rem;
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #e0e6e9;
+      min-height: 100vh;
+      line-height: 1.6;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas:
+        "sidebar header"
+        "sidebar main"
+        "sidebar footer";
+    }
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1c2a35;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #10b981;
+      border-radius: 10px;
+    }
+    header {
+      grid-area: header;
+      padding: 1rem 2rem;
+      background: rgba(16, 185, 129, 0.15);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #10b981;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    header h1 {
+      font-weight: 800;
+      font-size: 1.75rem;
+      color: #10b981;
+      margin: 0;
+    }
+    nav#sidebar {
+      grid-area: sidebar;
+      background: rgba(16, 185, 129, 0.1);
+      padding: 1.5rem 1rem;
+      overflow-y: auto;
+      border-right: 1px solid #10b981;
+    }
+    nav#sidebar h2 {
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: #10b981;
+      letter-spacing: 0.05em;
+    }
+    nav#sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    nav#sidebar ul li {
+      margin-bottom: 0.75rem;
+    }
+    nav#sidebar ul li a {
+      color: #a2f5bf;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: block;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    nav#sidebar ul li a:hover,
+    nav#sidebar ul li a.active {
+      background: #10b981;
+      color: #072312;
     }
     main {
-      padding: 1rem 1.5rem 2rem 1.5rem;
-      max-width: 100%;
+      grid-area: main;
+      max-width: 900px;
+      margin: 2.5rem auto 4rem;
+      padding: 0 2rem;
     }
-  }
-</style>
+    .welcome-hero {
+      background: rgba(16, 185, 129, 0.15);
+      border-radius: 20px;
+      padding: 4rem 3rem;
+      box-shadow:
+        0 6px 20px rgb(16 185 129 / 0.35),
+        0 0 20px rgb(16 185 129 / 0.45);
+      margin-bottom: 3rem;
+      text-align: center;
+      color: #d1eee0;
+      backdrop-filter: blur(10px);
+    }
+    .welcome-hero h2 {
+      font-weight: 900;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #10b981;
+    }
+    .welcome-hero p {
+      font-weight: 600;
+      font-size: 1.3rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+      color: #b3f1c2;
+    }
+    .welcome-hero img {
+      margin-top: 2rem;
+      max-width: 280px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+    }
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 3rem;
+      color: #a2f5bf;
+      background: rgba(16, 185, 129, 0.05);
+      border-radius: 12px;
+      box-shadow:
+        0 3px 12px rgb(16 185 129 / 0.3);
+      overflow: hidden;
+    }
+    .summary-table thead tr {
+      background: #10b981;
+      color: #072312;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    .summary-table thead th {
+      padding: 14px 20px;
+      text-align: left;
+      user-select: none;
+    }
+    .summary-table tbody tr {
+      border-bottom: 1px solid rgba(16,185,129,0.2);
+    }
+    .summary-table tbody tr:last-child {
+      border-bottom: none;
+    }
+    .summary-table tbody td {
+      padding: 14px 20px;
+      vertical-align: middle;
+      font-weight: 600;
+    }
+    .summary-table tfoot tr {
+      background: #0a663f;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+    .summary-table tfoot td {
+      padding: 14px 20px;
+    }
+    section {
+      margin-bottom: 3.5rem;
+      background: rgba(255 255 255 / 0.05);
+      border-radius: 16px;
+      padding: 2rem 2.5rem;
+      box-shadow:
+        0 2px 8px rgb(16 185 129 / 0.15),
+        0 0 10px rgb(16 185 129 / 0.25);
+      transition: box-shadow 0.3s ease;
+    }
+    section:hover {
+      box-shadow:
+        0 6px 20px rgb(16 185 129 / 0.35),
+        0 0 20px rgb(16 185 129 / 0.45);
+    }
+    section > h2 {
+      font-weight: 800;
+      font-size: 1.75rem;
+      color: #10b981;
+      margin-bottom: 1.25rem;
+      border-bottom: 3px solid #10b981;
+      padding-bottom: 0.25rem;
+    }
+    section h3 {
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: #7af3b4;
+    }
+    section p, section ul, section ol {
+      font-weight: 400;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #d1eee0;
+    }
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+      color: #c7f5cd;
+    }
+    table th, table td {
+      border: 1px solid #10b981;
+      padding: 8px 16px;
+      text-align: left;
+    }
+    table th {
+      background: #10b981;
+      color: #072312;
+      font-weight: 700;
+    }
+    table tr:nth-child(even) {
+      background: rgba(16, 185, 129, 0.1);
+    }
+    @media (max-width: 1024px) {
+      body {
+        grid-template-columns: 60px 1fr;
+      }
+      nav#sidebar {
+        padding: 1rem 0.6rem;
+      }
+      nav#sidebar ul li a {
+        font-size: 0.85rem;
+        padding: 6px 8px;
+      }
+      main {
+        padding: 0 1rem;
+        margin: 2rem auto 4rem;
+      }
+    }
+    @media (max-width: 640px) {
+      body {
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: none;
+        grid-template-rows: auto 1fr auto;
+        min-height: 100vh;
+      }
+      nav#sidebar {
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 280px;
+        height: 100vh;
+        z-index: 20;
+        transition: left 0.3s ease;
+        border-right: none;
+        background: rgba(16, 185, 129, 0.95);
+        padding: 2rem 1.5rem;
+        overflow-y: auto;
+        box-shadow: 4px 0 12px rgba(0,0,0,0.5);
+        backdrop-filter: blur(10px);
+      }
+      nav#sidebar.open {
+        left: 0;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        justify-content: space-between;
+        background: rgba(16, 185, 129, 0.85);
+        border-bottom: none;
+        padding: 1rem 1.5rem;
+        backdrop-filter: blur(10px);
+      }
+      main {
+        margin: 1rem auto 3rem;
+        padding: 0 1rem;
+        max-width: 100%;
+      }
+      button#menu-toggle {
+        background: none;
+        border: none;
+        font-size: 1.6rem;
+        color: #d1eee0;
+        cursor: pointer;
+        padding: 6px 8px;
+        border-radius: 8px;
+        transition: background-color 0.2s ease;
+      }
+      button#menu-toggle:hover {
+        background-color: #0d7a55;
+      }
+    }
+    h2.section-header-anchor::before {
+      content: '';
+      display: block;
+      height: 80px;
+      margin-top: -80px;
+      visibility: hidden;
+    }
+  </style>
 </head>
 <body>
-<nav>
-  <h1>Grade 11 Computer Syllabus</h1>
-  <ul id="menu">
-    <li><a href="#computer-system" class="active">1. Computer System</a></li>
-    <li><a href="#number-boolean-logic">2. Number System & Boolean Logic</a></li>
-    <li><a href="#computer-software-os">3. Computer Software & OS</a></li>
-    <li><a href="#application-package">4. Application Package</a></li>
-    <li><a href="#programming-concepts">5. Programming Concepts (C)</a></li>
-    <li><a href="#web-technology">6. Web Technology I (HTML+CSS)</a></li>
-    <li><a href="#multimedia">7. Multimedia</a></li>
-    <li><a href="#info-security-cyber-law">8. Information Security & Cyber Law</a></li>
+
+<header>
+  <h1>NEB Grade 12 - Computer Science</h1>
+  <button id="menu-toggle" aria-label="Toggle Navigation Menu" title="Toggle Navigation Menu" hidden>☰</button>
+</header>
+
+<nav id="sidebar" aria-label="Primary Navigation">
+  <h2>Contents</h2>
+  <ul>
+    <li><a href="#welcome" class="active">Welcome</a></li>
+    <li><a href="#summary-table">Summary Table</a></li>
+    <li><a href="#data-information">Data & Information</a></li>
+    <li><a href="#database-purpose">Database & Purpose</a></li>
+    <li><a href="#database-terminologies">Terminologies in Database</a></li>
+    <li><a href="#data-dictionary">Data Dictionary</a></li>
+    <li><a href="#dbms">Database Management System</a></li>
+    <li><a href="#types-database-models">Types of Database Model</a></li>
+    <li><a href="#integrity-constraints">Integrity Constraints & Types</a></li>
+    <li><a href="#normalization">Normalization</a></li>
+    <li><a href="#centralized-distributed">Centralized & Distributed Databases</a></li>
+    <li><a href="#database-security">Database Security</a></li>
+    <li><a href="#practical-topics">Practical Topics</a></li>
   </ul>
 </nav>
+
 <main>
-  <section id="computer-system">
-    <h2>1. Computer System</h2>
-    <p>A <strong>computer system</strong> is a combination of hardware and software components that work together to perform tasks, process data, and provide information. It consists of several interrelated parts:</p>
-    <ul>
-      <li><strong>Input Unit:</strong> These devices allow users to enter data and commands. Examples include keyboard, mouse, scanner, and microphone.</li>
-      <li><strong>Processing Unit:</strong> This is the brain of the computer, mainly the Central Processing Unit (CPU), which interprets and executes instructions. It consists of the Arithmetic Logic Unit (ALU) and the Control Unit (CU).</li>
-      <li><strong>Memory Unit:</strong> Used to store data temporarily or permanently. Primary memory (RAM) stores data temporarily during processing, while secondary memory (hard drives, SSDs) stores data persistently.</li>
-      <li><strong>Output Unit:</strong> Devices that display or produce results from processed data, such as monitors, printers, and speakers.</li>
-      <li><strong>Storage Unit:</strong> Components that retain data and software long-term, including hard disk drives and optical drives.</li>
-    </ul>
-    <p>The computer system operates by receiving input, processing that input using programs stored in memory, and giving output. This cycle enables computers to perform countless tasks, from simple calculations to complex data processing.</p>
-    <p><strong>Classification of Computers:</strong> Computers vary in size and power:</p>
-    <ul>
-      <li><strong>Supercomputers:</strong> Extremely fast computers used for complex scientific calculations.</li>
-      <li><strong>Mainframe computers:</strong> Large computers used by organizations to handle bulk data processing.</li>
-      <li><strong>Personal computers:</strong> Most common, used by individuals for daily tasks.</li>
-      <li><strong>Embedded systems:</strong> Computers integrated into devices like microwaves, cars, and appliances.</li>
-    </ul>
-    <div class="quiz">
-      <h3>Questions</h3>
-      <ol>
-        <li>List the main components of a computer system.
-          <div class="answer">Input Unit, Processing Unit (CPU), Memory Unit, Storage Unit, and Output Unit.</div>
-        </li>
-        <li>What is the role of the CPU?
-          <div class="answer">It processes instructions, performs calculations, and controls other parts of the computer.</div>
-        </li>
-        <li>Give two examples of input devices.
-          <div class="answer">Keyboard and mouse.</div>
-        </li>
-        <li>What type of memory stores data temporarily for quick access?
-          <div class="answer">Primary memory (RAM).</div>
-        </li>
-      </ol>
-    </div>
+  <section id="welcome" class="welcome-hero">
+    <h2>Welcome to NEB Grade 12 Computer Science!</h2>
+    <p>This website is your learning companion for Computer Science.</p>
+    <p>Explore the topics step-by-step and build strong foundational knowledge to excel in your studies.</p>
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f7d665f7-4560-4d1a-8f1f-29b00bd7bc80.png" alt="Welcome banner showing NEB Grade 12 text in modern green theme" />
   </section>
 
-  <section id="number-boolean-logic" style="margin-top: 3rem;">
-    <h2>2. Number System and Boolean Logic</h2>
-    <h3>Number System</h3>
-    <p>The <strong>number system</strong> is a writing system for expressing numbers. Computers operate in binary, but humans generally use the decimal system.</p>
-    <p>Common number systems used in computing are:</p>
-    <ul>
-      <li><strong>Decimal (Base 10):</strong> Uses digits 0–9. Our everyday number system.</li>
-      <li><strong>Binary (Base 2):</strong> Uses digits 0 and 1. The fundamental language of computers.</li>
-      <li><strong>Octal (Base 8):</strong> Uses digits 0–7.</li>
-      <li><strong>Hexadecimal (Base 16):</strong> Uses digits 0–9 and letters A–F to represent values 10–15.</li>
-    </ul>
-    <p><strong>Number System Conversions:</strong> Converting between number systems is essential in computer science.</p>
-    <p><em>Decimal to Binary Conversion:</em> Divide the decimal number by 2 repeatedly, note remainders, then read them in reverse order.</p>
-    <p>Example: Convert decimal 13 to binary</p>
-    <ul>
-      <li>13 ÷ 2 = 6 remainder 1</li>
-      <li>6 ÷ 2 = 3 remainder 0</li>
-      <li>3 ÷ 2 = 1 remainder 1</li>
-      <li>1 ÷ 2 = 0 remainder 1</li>
-    </ul>
-    <p>Binary number = 1101</p>
-
-    <h3>Boolean Logic</h3>
-    <p><strong>Boolean logic</strong> is a form of algebra in which all values are either true or false, represented as 1 and 0 respectively. It forms a basis for digital computer logic and programming.</p>
-    <p>The basic Boolean operators are:</p>
-    <ul>
-      <li><strong>AND (&amp;):</strong> True only if both inputs are true.</li>
-      <li><strong>OR (|):</strong> True if at least one input is true.</li>
-      <li><strong>NOT (!):</strong> Inverts the value; true becomes false, false becomes true.</li>
-    </ul>
-    <p>Boolean expressions are fundamental in designing circuits, writing code, and controlling computer logic.</p>
-    <p>Laws such as <em>De Morgan's Theorems</em> help simplify Boolean expressions for efficiency.</p>
-    <div class="quiz">
-      <h3>Questions</h3>
-      <ol>
-        <li>List four number systems commonly used in computing.
-          <div class="answer">Decimal, Binary, Octal, Hexadecimal.</div>
-        </li>
-        <li>Explain the process to convert decimal to binary.
-          <div class="answer">Divide decimal by 2 repeatedly, note remainders, read remainders in reverse order to get binary.</div>
-        </li>
-        <li>Define Boolean logic.
-          <div class="answer">An algebra of truth values using 1 (true) and 0 (false).</div>
-        </li>
-        <li>What is the result of 1 AND 0 in Boolean logic?
-          <div class="answer">0 (False).</div>
-        </li>
-        <li>What does the NOT operator do in Boolean logic?
-          <div class="answer">It inverts the value; true becomes false and false becomes true.</div>
-        </li>
-      </ol>
-    </div>
+  <section id="summary-table" aria-label="Summary Table for Marks and Working Hours">
+    <h2 class="section-header-anchor">Summary Table: Topics, Marks and Working Hours</h2>
+    <table class="summary-table" role="table" aria-describedby="summary-desc">
+      <caption id="summary-desc" style="text-align:left; margin-bottom:0.75rem;">
+        Overview of topics with content-wise marks and working hours.
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">S.N</th>
+          <th scope="col">Topic</th>
+          <th scope="col">Content-wise Marks</th>
+          <th scope="col">Working Hours</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Data Base Management System</td>
+          <td>8</td>
+          <td>12</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Data Communication and Networking</td>
+          <td>9</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Web Technology-II</td>
+          <td>8</td>
+          <td>12</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>C-Programming-II</td>
+          <td>8</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Object Oriented Programming</td>
+          <td>6</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Software Oriented Programming Life Cycle</td>
+          <td>6</td>
+          <td>9</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Recent Trend In Technology</td>
+          <td>5</td>
+          <td>12</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">Total</td>
+          <td>50</td>
+          <td>80</td>
+        </tr>
+      </tfoot>
+    </table>
   </section>
 
-  <section id="computer-software-os" style="margin-top: 3rem;">
-    <h2>3. Computer Software and Operating System</h2>
-    <p><strong>Software</strong> refers to programs and operating systems that make computers useful. Software is categorized into system software and application software.</p>
-    <p><strong>System Software</strong> manages hardware and provides a platform for running application programs. The main type of system software is the <strong>Operating System (OS)</strong>.</p>
-    <p><strong>Operating System (OS):</strong> It acts as the interface between user and hardware, managing resources such as processor, memory, input/output devices, and file systems.</p>
-    <p>Common OS functions:</p>
+  <section id="data-information">
+    <h2 class="section-header-anchor">Data & Information</h2>
+    <h3>Data</h3>
+    <p>Data consists of raw facts and figures without context. It represents raw input that can be processed to generate meaningful insights.</p>
+    <h3>Information</h3>
+    <p>Information is processed data that is meaningful, organized, and useful for decision-making and analysis.</p>
+    <h3>Features of Information</h3>
     <ul>
-      <li>Process management and multitasking</li>
-      <li>Memory management</li>
-      <li>File system management</li>
-      <li>Device management</li>
-      <li>User interface provision</li>
+      <li>Accuracy</li>
+      <li>Relevance</li>
+      <li>Completeness</li>
+      <li>Timeliness</li>
+      <li>Understandability</li>
+      <li>Verifiability</li>
     </ul>
-    <p>Popular operating systems include Windows, Linux, macOS, Android, and iOS.</p>
-    <p><strong>Application Software:</strong> Programs designed for specific tasks like word processing, spreadsheets, media players, and web browsers.</p>
-    <div class="quiz">
-      <h3>Questions</h3>
-      <ol>
-        <li>What is system software?
-          <div class="answer">Software that controls hardware and provides a platform for running application software.</div>
-        </li>
-        <li>Name three popular operating systems.
-          <div class="answer">Windows, Linux, macOS.</div>
-        </li>
-        <li>List two functions of an operating system.
-          <div class="answer">Process management, file system management.</div>
-        </li>
-        <li>What is application software?
-          <div class="answer">Programs designed to perform specific tasks for users, like word processors.</div>
-        </li>
-      </ol>
-    </div>
   </section>
 
-  <section id="application-package" style="margin-top: 3rem;">
-    <h2>4. Application Package (Word, Excel, PowerPoint)</h2>
-    <p><strong>Application packages</strong> are collections of software designed for specific tasks. In office environments, the most common packages are Microsoft Word, Excel, and PowerPoint.</p>
-    <p><strong>Microsoft Word:</strong> A word processor used for creating, formatting, and editing text documents. Features include spell check, text styling, tables, and images integration.</p>
-    <p><strong>Microsoft Excel:</strong> A spreadsheet application used to store, organize, and analyze data. It supports formulas, charts, pivot tables, and data visualization.</p>
-    <p><strong>Microsoft PowerPoint:</strong> A presentation software to create slideshows combining text, images, and multimedia effects. Useful for lectures, meetings, and reports.</p>
-    <p>Working knowledge of these packages is essential for academic and professional success.</p>
-    <div class="quiz">
-      <h3>Questions</h3>
-      <ol>
-        <li>What is Microsoft Word used for?
-          <div class="answer">Creating and editing text documents.</div>
-        </li>
-        <li>Name two features of Microsoft Excel.
-          <div class="answer">Formulas for calculations and creating charts.</div>
-        </li>
-        <li>What type of software is Microsoft PowerPoint?
-          <div class="answer">Presentation software.</div>
-        </li>
-        <li>Why is proficiency in application packages important?
-          <div class="answer">They help in efficient document, data handling, and presentation creation.</div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section id="programming-concepts" style="margin-top: 3rem;">
-    <h2>5. Programming Concepts and Logics (C Language)</h2>
-    <p><strong>Programming</strong> is the process of writing instructions that a computer can follow to perform tasks. The language used to write these instructions is called a <strong>programming language</strong>. C language is a foundational procedural programming language widely used in systems programming.</p>
-    <p>Key programming concepts in C include:</p>
+  <section id="database-purpose">
+    <h2 class="section-header-anchor">Database and its Purpose</h2>
+    <p>A database is a structured collection of related data stored electronically that allows efficient retrieval, insertion, and management of data.</p>
+    <p>The purpose of a database includes:</p>
     <ul>
-      <li><strong>Variables:</strong> Named storage locations to hold data values.</li>
-      <li><strong>Data types:</strong> Define the type of data (int, char, float, etc.).</li>
-      <li><strong>Operators:</strong> Symbols that perform operations on variables and values (arithmetic, relational, logical).</li>
-      <li><strong>Control structures:</strong> Statements to control the flow of execution like if-else, loops (for, while).</li>
-      <li><strong>Functions:</strong> Blocks of code designed to perform specific tasks and can be reused.</li>
-      <li><strong>Arrays:</strong> Collections of variables of the same type.</li>
+      <li>Data Storage and Management</li>
+      <li>Data Retrieval</li>
+      <li>Data Security and Integrity</li>
+      <li>Data Sharing and Administration</li>
+      <li>Reducing Data Redundancy</li>
     </ul>
-    <p>Basic program structure of a C program includes including header files, defining the main function, declarations, and statements.</p>
-    <p>Example snippet:</p>
-    <pre style="background:#ecf0f1; padding: 12px; border-radius:6px; overflow-x:auto;">
-#include &lt;stdio.h&gt;
-
-int main() {
-    printf("Hello, World!\\n");
-    return 0;
-}
-    </pre>
-    <div class="quiz">
-      <h3>Questions</h3>
-      <ol>
-        <li>What is a variable in programming?
-          <div class="answer">A named location in memory used to store data.</div>
-        </li>
-        <li>Name two data types in C language.
-          <div class="answer">int, char (also float, double).</div>
-        </li>
-        <li>What are control structures? Give one example.
-          <div class="answer">Statements that control flow of program execution; example: if-else.</div>
-        </li>
-        <li>What is the purpose of functions?
-          <div class="answer">To organize code into reusable blocks for specific tasks.</div>
-        </li>
-      </ol>
-    </div>
   </section>
 
-  <section id="web-technology" style="margin-top: 3rem;">
-    <h2>6. Web Technology I (HTML + CSS)</h2>
-    <p><strong>Web technology</strong> involves the tools and languages used to create web pages and web applications. Two fundamental technologies are <strong>HTML</strong> and <strong>CSS</strong>.</p>
-    <p><strong>HTML (HyperText Markup Language)</strong> is the standard language for creating the structure of web pages. HTML uses tags to define headings, paragraphs, links, images, tables, forms, and other content elements.</p>
-    <p>Example of an HTML tag: <code>&lt;p&gt;</code> for paragraphs.</p>
-    <p><strong>CSS (Cascading Style Sheets)</strong> is used to style HTML content with colors, fonts, spacing, and layout. CSS allows for responsive design, making websites adapt to different screen sizes and devices.</p>
-    <p>CSS can be applied inline, internally within &lt;style&gt; tags, or externally by linking to stylesheet files.</p>
-    <p>Understanding these technologies is essential for web development and designing user-friendly websites.</p>
-    <div class="quiz">
-      <h3>Questions</h3>
-      <ol>
-        <li>What does HTML stand for?
-          <div class="answer">HyperText Markup Language.</div>
-        </li>
-        <li>What is the function of CSS?
-          <div class="answer">To style and format HTML elements on a webpage.</div>
-        </li>
-        <li>How can CSS be added to an HTML page?
-          <div class="answer">Via inline styles, internal stylesheets, or external stylesheet files.</div>
-        </li>
-        <li>What HTML tag is commonly used to define a paragraph?
-          <div class="answer">&lt;p&gt; tag.</div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section id="multimedia" style="margin-top: 3rem;">
-    <h2>7. Multimedia</h2>
-    <p><strong>Multimedia</strong> refers to the integration of multiple forms of media such as text, graphics, audio, video, and animations to deliver information and enhance communication effectively.</p>
-    <p>Multimedia increases engagement and helps convey information in a more interactive and understandable way. It is widely used in education, entertainment, advertising, and web design.</p>
-    <p>Key types of multimedia elements include:</p>
+  <section id="database-terminologies">
+    <h2 class="section-header-anchor">Terminologies in Database</h2>
     <ul>
-      <li><strong>Text:</strong> Written words used for information.</li>
-      <li><strong>Graphics:</strong> Still images, drawings, or digital pictures.</li>
-      <li><strong>Audio:</strong> Sound effects, music, and voice recordings.</li>
-      <li><strong>Video:</strong> Moving images, usually with sound.</li>
-      <li><strong>Animation:</strong> Moving graphics created using frame-by-frame or software tools.</li>
+      <li><strong>Table:</strong> A collection of related data organized in rows and columns.</li>
+      <li><strong>Field:</strong> A single column in a table representing an attribute.</li>
+      <li><strong>Record:</strong> A row in a table representing a single data item.</li>
+      <li><strong>Tuple:</strong> Another name for a record; an ordered set of values.</li>
+      <li><strong>Object:</strong> An entity with attributes and behaviors in object-oriented databases.</li>
+      <li><strong>Keys:</strong> Attributes that help uniquely identify records (Primary Key, Foreign Key).</li>
     </ul>
-    <p>Tools like Adobe Photoshop, Audacity, and Premiere are widely used for editing multimedia components.</p>
-    <div class="quiz">
-      <h3>Questions</h3>
-      <ol>
-        <li>Define multimedia.
-          <div class="answer">The combination of text, graphics, audio, video, and animation used to convey information.</div>
-        </li>
-        <li>Name five types of multimedia content.
-          <div class="answer">Text, graphics, audio, video, animation.</div>
-        </li>
-        <li>Why is multimedia important?
-          <div class="answer">It makes communication more engaging and easier to understand.</div>
-        </li>
-        <li>Give examples of software used for multimedia editing.
-          <div class="answer">Adobe Photoshop (images), Audacity (audio), Adobe Premiere (video).</div>
-        </li>
-      </ol>
-    </div>
   </section>
 
-  <section id="info-security-cyber-law" style="margin-top: 3rem;">
-    <h2>8. Information Security and Cyber Law</h2>
-    <p><strong>Information Security</strong> involves protecting information and information systems from unauthorized access, use, disclosure, disruption, modification, or destruction. The core principles are:</p>
+  <section id="data-dictionary">
+    <h2 class="section-header-anchor">Data Dictionary</h2>
+    <p>The data dictionary is a centralized repository that contains information about the data such as meaning, relationships to other data, origin, usage, and format.</p>
+  </section>
+
+  <section id="dbms">
+    <h2 class="section-header-anchor">Database Management System (DBMS)</h2>
+    <h3>Introduction</h3>
+    <p>A DBMS is software that manages databases and provides users and applications with a systematic way to create, retrieve, update, and manage data.</p>
+    <h3>Objectives</h3>
     <ul>
-      <li><strong>Confidentiality:</strong> Ensuring data is only accessible to authorized users.</li>
-      <li><strong>Integrity:</strong> Ensuring data remains accurate and unaltered.</li>
-      <li><strong>Availability:</strong> Ensuring information and resources are available when needed.</li>
+      <li>To provide data independence and efficient data access.</li>
+      <li>To support multiple user interfaces.</li>
+      <li>To ensure data integrity and security.</li>
+      <li>To support backup and recovery.</li>
     </ul>
-    <p>Security techniques include using passwords, encryption, firewalls, antivirus software, and backup.</p>
-    <p><strong>Cyber Law</strong> refers to law related to use of computers, internet, and digital technologies to prevent cybercrimes such as hacking, identity theft, cyberbullying, and online fraud.</p>
-    <p>It regulates online activities, data privacy, intellectual property, and access to digital information.</p>
-    <div class="quiz">
-      <h3>Questions</h3>
-      <ol>
-        <li>What are the three main goals of information security?
-          <div class="answer">Confidentiality, Integrity, Availability.</div>
-        </li>
-        <li>Give two methods used to protect information.
-          <div class="answer">Passwords and encryption.</div>
-        </li>
-        <li>What is cyber law?
-          <div class="answer">Laws related to computer, internet, and digital technology use.</div>
-        </li>
-        <li>Name two types of cybercrime.
-          <div class="answer">Hacking and identity theft.</div>
-        </li>
-      </ol>
-    </div>
+    <h3>Advantages</h3>
+    <ul>
+      <li>Improved data sharing</li>
+      <li>Improved data security</li>
+      <li>Better data integration</li>
+      <li>Minimized data inconsistency</li>
+      <li>Improved data access</li>
+    </ul>
+    <h3>Disadvantages</h3>
+    <ul>
+      <li>Costly to set up</li>
+      <li>Complex software</li>
+      <li>May require specialized personnel</li>
+      <li>Performance overhead</li>
+    </ul>
   </section>
 
+  <section id="types-database-models">
+    <h2 class="section-header-anchor">Types of Database Models</h2>
+    <h3>Hierarchical Model</h3>
+    <p>Data is organized into a tree-like structure where each child has one parent, but parents can have many children.</p>
+    <h3>Network Model</h3>
+    <p>An extension of hierarchical model where each child can have multiple parents, forming a graph structure.</p>
+    <h3>Relational Model</h3>
+    <p>Data is organized in tables (relations) consisting of rows and columns.</p>
+    <h3>Entity-Relational Model (E-R Model)</h3>
+    <p>Uses entities and relationships to represent data and their associations in a more natural manner.</p>
+  </section>
+
+  <section id="integrity-constraints">
+    <h2 class="section-header-anchor">Integrity Constraints and Types</h2>
+    <h3>Domain Integrity</h3>
+    <p>Ensures that all entries in a column adhere to a defined domain (data type, format, range).</p>
+    <h3>Entity Integrity</h3>
+    <p>Ensures that each table has a primary key and that it is unique and not null.</p>
+    <h3>Referential Integrity</h3>
+    <p>Ensures foreign keys in a table correctly reference primary keys in related tables.</p>
+    <h3>Keys</h3>
+    <ul>
+      <li><strong>Primary Key:</strong> Uniquely identifies a record.</li>
+      <li><strong>Foreign Key:</strong> Enforces a link between tables.</li>
+    </ul>
+  </section>
+
+  <section id="normalization">
+    <h2 class="section-header-anchor">Normalization</h2>
+    <h3>Introduction</h3>
+    <p>Normalization is the process of organizing data to reduce redundancy and improve data integrity.</p>
+    <h3>Normal Forms</h3>
+    <ol>
+      <li><strong>First Normal Form (1NF):</strong> Eliminate repeating groups; atomic column values.</li>
+      <li><strong>Second Normal Form (2NF):</strong> Achieve 1NF and remove partial dependency.</li>
+      <li><strong>Third Normal Form (3NF):</strong> Achieve 2NF and remove transitive dependency.</li>
+    </ol>
+    <h3>Advantages</h3>
+    <ul>
+      <li>Reduces data redundancy</li>
+      <li>Improves consistency</li>
+      <li>Makes database easier to maintain</li>
+    </ul>
+    <h3>Disadvantages</h3>
+    <ul>
+      <li>Can increase complexity with many tables</li>
+      <li>May degrade performance due to many joins</li>
+    </ul>
+  </section>
+
+  <section id="centralized-distributed">
+    <h2 class="section-header-anchor">Centralized and Distributed Databases</h2>
+    <h3>Introduction</h3>
+    <p><strong>Centralized Database:</strong> All data is stored at a single location.</p>
+    <p><strong>Distributed Database:</strong> Data is stored at multiple locations connected via a network.</p>
+    <h3>Advantages</h3>
+    <ul>
+      <li>Centralized: Easier management and control</li>
+      <li>Distributed: Improved reliability and availability</li>
+    </ul>
+    <h3>Disadvantages</h3>
+    <ul>
+      <li>Centralized: Single point of failure</li>
+      <li>Distributed: Complex to manage and maintain consistency</li>
+    </ul>
+    <h3>Comparison</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Aspect</th>
+          <th>Centralized DB</th>
+          <th>Distributed DB</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data Location</td>
+          <td>Single site</td>
+          <td>Multiple sites</td>
+        </tr>
+        <tr>
+          <td>Management</td>
+          <td>Simpler</td>
+          <td>Complex</td>
+        </tr>
+        <tr>
+          <td>Reliability</td>
+          <td>Lower</td>
+          <td>Higher</td>
+        </tr>
+        <tr>
+          <td>Cost</td>
+          <td>Less infrastructure</td>
+          <td>More infrastructure</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="database-security">
+    <h2 class="section-header-anchor">Database Security</h2>
+    <h3>Introduction</h3>
+    <p>Database security involves protecting the database against unauthorized access, misuse, and threats.</p>
+    <h3>Challenges</h3>
+    <ul>
+      <li>Unauthorized data access</li>
+      <li>Data tampering and theft</li>
+      <li>Backup and recovery risks</li>
+      <li>Complex access control management</li>
+    </ul>
+    <h3>Security Measures</h3>
+    <ul>
+      <li>Authentication and authorization</li>
+      <li>Encryption of data</li>
+      <li>Audit and monitoring</li>
+      <li>Backup and recovery procedures</li>
+    </ul>
+    <h3>Roles of DBA</h3>
+    <ul>
+      <li>Database design and implementation</li>
+      <li>Security administration</li>
+      <li>Backup and recovery management</li>
+      <li>Performance tuning and troubleshooting</li>
+      <li>Enforcing data integrity and availability</li>
+    </ul>
+  </section>
+
+  <section id="practical-topics">
+    <h2 class="section-header-anchor">Practical Topics: DDL and DML Languages & SQL Data Types</h2>
+    <h3>DDL and DML Languages</h3>
+    <p><strong>DDL (Data Definition Language):</strong> Commands like CREATE, ALTER, DROP - used to define or modify database structure.</p>
+    <h3>DML (Data Manipulation Language):</h3>
+    <p>Commands like INSERT, UPDATE, DELETE, SELECT - used to manipulate data in tables.</p>
+    <h3>SQL Data Types</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Data Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>CHAR</td><td>Fixed-length character string.</td></tr>
+        <tr><td>VARCHAR</td><td>Variable-length character string.</td></tr>
+        <tr><td>BINARY</td><td>Fixed-length binary data.</td></tr>
+        <tr><td>VARBINARY</td><td>Variable-length binary data.</td></tr>
+        <tr><td>TINYBLOB</td><td>Small binary large object.</td></tr>
+        <tr><td>TINYTEXT</td><td>Very small text string.</td></tr>
+        <tr><td>TEXT</td><td>Large text string.</td></tr>
+        <tr><td>LONGTEXT</td><td>Very large text string.</td></tr>
+        <tr><td>ENUM</td><td>Enumeration, a string object with a set of permitted values.</td></tr>
+        <tr><td>BIT</td><td>Bit-field type.</td></tr>
+        <tr><td>TINYINT</td><td>Very small integer.</td></tr>
+        <tr><td>BOOLEAN</td><td>Boolean value (TRUE/FALSE).</td></tr>
+        <tr><td>INTEGER</td><td>Standard integer.</td></tr>
+        <tr><td>FLOAT</td><td>Floating point number.</td></tr>
+        <tr><td>DOUBLE</td><td>Double precision floating point.</td></tr>
+        <tr><td>DECIMAL</td><td>Exact fixed-point number.</td></tr>
+        <tr><td>DATE</td><td>Date value.</td></tr>
+        <tr><td>DATETIME</td><td>Date and time value.</td></tr>
+      </tbody>
+    </table>
+  </section>
 </main>
+
 <script>
-  // Highlight active menu item on scroll
-  const sections = document.querySelectorAll('main section');
-  const menuLinks = document.querySelectorAll('nav ul li a');
+  (() => {
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('menu-toggle');
+    const links = Array.from(sidebar.querySelectorAll('a'));
 
-  function activateMenu() {
-    let index = sections.length;
-
-    while(--index && window.scrollY + 100 < sections[index].offsetTop) {}
-
-    menuLinks.forEach((link) => link.classList.remove('active'));
-    if(menuLinks[index]) {
-      menuLinks[index].classList.add('active');
+    function activateLinkOnScroll() {
+      let scrollPos = window.scrollY + 120;
+      links.forEach(link => {
+        const section = document.querySelector(link.hash);
+        if (section) {
+          if (section.offsetTop <= scrollPos && (section.offsetTop + section.offsetHeight) > scrollPos) {
+            links.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+          }
+        }
+      });
     }
-  }
+    window.addEventListener('scroll', activateLinkOnScroll);
 
-  activateMenu();
-  window.addEventListener('scroll', activateMenu);
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.querySelector(link.hash).scrollIntoView({behavior: 'smooth', block: 'start'});
+        if (window.innerWidth <= 640 && sidebar.classList.contains('open')) {
+          sidebar.classList.remove('open');
+        }
+      });
+    });
 
-  // Smooth scroll on menu click
-  menuLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const target = document.querySelector(link.getAttribute('href'));
-      if (target) {
-        window.scrollTo({
-          top: target.offsetTop - 30,
-          behavior: 'smooth'
-        });
+    function toggleSidebar() {
+      sidebar.classList.toggle('open');
+    }
+    if (toggleBtn) {
+      toggleBtn.hidden = false;
+      toggleBtn.addEventListener('click', toggleSidebar);
+    }
+
+    document.body.addEventListener('click', e => {
+      if (window.innerWidth <= 640) {
+        if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target) && sidebar.classList.contains('open')) {
+          sidebar.classList.remove('open');
+        }
       }
     });
-  });
+  })();
 </script>
+
 </body>
 </html>
 
