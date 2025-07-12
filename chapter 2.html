@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Questions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #007BFF;
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 10px;
+        }
+        p {
+            line-height: 1.6;
+            color: #555;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Database Questions</h1>
+
+        <h2>1. What is Database and DBMS?</h2>
+        <p>A database is an organized collection of data, generally stored and accessed electronically from a computer system. A Database Management System (DBMS) is software that interacts with end users, applications, and the database itself to capture and analyze data.</p>
+        <h3>Advantages of DBMS:</h3>
+        <ul>
+            <li>Data Integrity</li>
+            <li>Data Security</li>
+            <li>Data Redundancy Control</li>
+            <li>Improved Data Access</li>
+        </ul>
+        <h3>Disadvantages of DBMS:</h3>
+        <ul>
+            <li>Complexity</li>
+            <li>Cost</li>
+            <li>Performance Overhead</li>
+            <li>Potential for Data Loss</li>
+        </ul>
+
+        <h2>2. Differentiate between file processing system and DBMS.</h2>
+        <ul>
+            <li>Data Redundancy: File processing systems often have data redundancy, while DBMS minimizes it.</li>
+            <li>Data Integrity: DBMS ensures data integrity, whereas file systems may not.</li>
+            <li>Data Access: DBMS provides better data access methods compared to file systems.</li>
+            <li>Security: DBMS offers more robust security features than file processing systems.</li>
+        </ul>
+
+        <h2>3. Explain the different models of DBMS with advantages and disadvantages.</h2>
+        <p>Common DBMS models include:</p>
+        <ul>
+            <li><strong>Hierarchical Model:</strong> Advantages: Simple structure, fast access. Disadvantages: Limited flexibility.</li>
+            <li><strong>Network Model:</strong> Advantages: More flexible than hierarchical. Disadvantages: Complexity in design.</li>
+            <li><strong>Relational Model:</strong> Advantages: Easy to use, powerful querying. Disadvantages: Performance can degrade with large datasets.</li>
+            <li><strong>Object-oriented Model:</strong> Advantages: Supports complex data types. Disadvantages: Less mature than relational models.</li>
+        </ul>
+
+        <h2>4. What is a relational database?</h2>
+        <p>A relational database is a type of database that stores data in tables that can be linked—or related—based on data common to each. It differs from other database models by using a structured query language (SQL) for data manipulation.</p>
+
+        <h2>5. What is data redundancy?</h2>
+        <p>Data redundancy refers to the unnecessary duplication of data within a database. DBMS helps reduce data redundancy by normalizing data and ensuring that each piece of data is stored only once.</p>
+
+        <h2>6. Differentiate between centralized and distributed database systems.</h2>
+        <ul>
+            <li>Centralized databases are stored in a single location, while distributed databases are spread across multiple locations.</li>
+            <li>Centralized systems are easier to manage, whereas distributed systems offer better reliability and availability.</li>
+            <li>Centralized databases can become a single point of failure, while distributed systems can continue to function even if one node fails.</li>
+            <li>Distributed databases can provide faster access to data for users in different geographical locations.</li>
+        </ul>
+
+        <h2>7. Who is Database Administrator (DBA)?</h2>
+        <p>A Database Administrator (DBA) is responsible for managing and maintaining database systems. Major responsibilities include:</p>
+        <ul>
+            <li>Database design and implementation</li>
+            <li>Performance monitoring and tuning</li>
+            <li>Backup and recovery</li>
+            <li>Security management</li>
+        </ul>
+
+        <h2>8. Define normalization.</h2>
+        <p>Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity. The normal forms include:</p>
+        <ul>
+            <li><strong>1NF:</strong> Each column must contain atomic values. Example: A table with student names should not have multiple names in a single cell.</li>
+            <li><strong>2NF:</strong> Must be in 1NF and all non-key attributes must be fully functional dependent on the primary key.</li>
+            <li><strong>3NF:</strong> Must be in 2NF and all attributes must be functionally dependent only on the primary key.</li>
+        </ul>
+
+        <h2>9. Explain the terms: primary key, foreign key, and candidate key.</h2>
+        <ul>
+            <li><strong>Primary Key:</strong> A unique identifier for a record in a table. Example: Student ID.</li>
+            <li><strong>Foreign Key:</strong> A field in one table that uniquely identifies a row of another table. Example: Student ID in a grades table referencing the students table.</li>
+            <li><strong>Candidate Key:</strong> A field that can uniquely identify a record but is not chosen as the primary key. Example: Email address can be a candidate key.</li>
+        </ul>
+
+        <h2>10. What is SQL?</h2>
+        <p>SQL (Structured Query Language) is a standard programming language for managing and manipulating databases. Its components include:</p>
+        <ul>
+            <li>Data Query Language (DQL)</li>
+            <li>Data Definition Language (DDL)</li>
+            <li>Data Manipulation Language (DML)</li>
+            <li>Data Control Language (DCL)</li>
+        </ul>
+
+        <h2>11. Write SQL commands to perform the following operations:</h2>
+        <h3>a. Create a table named students:</h3>
+        <pre><code>CREATE TABLE students (Id INT PRIMARY KEY, Name VARCHAR(100), Class VARCHAR(50), Marks INT);</code></pre>
+        <h3>b. Insert records into the students table:</h3>
+        <pre><code>INSERT INTO students (Id, Name, Class, Marks) VALUES (1, 'John', '10', 90);</code></pre>
+        <h3>c. Display all records from the students table:</h3>
+        <pre><code>SELECT * FROM students;</code></pre>
+        <h3>d. Update the marks of a student whose name is 'Anita':</h3>
+        <pre><code>UPDATE students SET Marks = 85 WHERE Name = 'Anita';</code></pre>
+        <h3>e. Delete the record of the student with id = 3:</h3>
+        <pre><code>DELETE FROM students WHERE Id = 3;</code></pre>
+
+        <h2>12. Define the following terms:</h2>
+        <ul>
+            <li><strong>Data Dictionary:</strong> A collection of metadata that describes the structure of the database.</li>
+            <li><strong>Primary Key:</strong> A unique identifier for a record in a table.</li>
+            <li><strong>Relationship:</strong> A connection between two tables in a database.</li>
+            <li><strong>Data Manipulation Language (DML):</strong> A subset of SQL used for managing data.</li>
+            <li><strong>Structured Query Language (SQL):</strong> A standard language for interacting with databases.</li>
+            <li><strong>Data Integrity:</strong> The accuracy and consistency of data in a database.</li>
+            <li><strong>Data Definition Language (DDL):</strong> A subset of SQL used for defining database structures.</li>
+            <li><strong>Data Security:</strong> Measures taken to protect data from unauthorized access.</li>
+            <li><strong>Database System:</strong> A system that manages databases and provides access to data.</li>
+        </ul>
+    </div>
+
+</body>
+</html>
