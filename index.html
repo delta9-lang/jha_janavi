@@ -702,4 +702,1538 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 4: C Programming Complete Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --accent: #60a5fa;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --code-bg: #2d2d2d;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--dark);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--dark);
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .nav-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            background: rgba(37, 99, 235, 0.1);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .section h3 {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .section h4 {
+            color: var(--dark);
+            font-size: 1.2rem;
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .section ul, .section ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .code-block {
+            background: var(--code-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+        }
+
+        .code-block code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .image-container {
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-container figcaption {
+            margin-top: 0.5rem;
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid #e2e8f0;
+        }
+
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .highlight {
+            background: rgba(255, 237, 213, 0.3);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .tip-box {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--success);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .warning-box {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid var(--warning);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: white;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav a {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animation for section reveal */
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Unit 4: C Programming Complete Guide</h1>
+            <p>Comprehensive reference for Functions, Structures, Pointers, File Handling, and more</p>
+        </header>
+
+        <div class="nav-container">
+            <nav>
+                <a href="#functions">Functions</a>
+                <a href="#structure-union">Structure & Union</a>
+                <a href="#pointers">Pointers</a>
+                <a href="#file-handling">File Handling</a>
+                <a href="#typedef">Typedef</a>
+            </nav>
+        </div>
+
+        <div class="content-grid">
+            <!-- Functions Section -->
+            <section id="functions" class="section">
+                <h2>Functions in C Programming</h2>
+                
+                <div class="image-container">
+                    <img src="https://placehold.co/800x400" alt="Visual representation of function components showing prototype, definition, call, and return flow in C programming" />
+                    <figcaption>Function Components and Flow</figcaption>
+                </div>
+
+                <h3>Introduction and Syntax</h3>
+                <p>A function is a self-contained block of code that performs a specific task. Functions help in modularizing code and making it reusable.</p>
+
+                <div class="code-block">
+                    <pre><code class="language-c">
+// Function prototype (declaration)
+return_type function_name(parameter_list);
+
+// Function definition
+return_type function_name(parameter_list) {
+    // Function body
+    // Statements
+    return value; // Optional based on return type
+}
+
+// Function call
+function_name(arguments);
+                    </code></pre>
+                </div>
+
+                <h3>Purpose and Advantages</h3>
+                <ul>
+                    <li><span class="highlight">Modularity</span>: Breaks complex problems into smaller, manageable parts</li>
+                    <li><span class="highlight">Reusability</span>: Functions can be called multiple times</li>
+                    <li><span class="highlight">Code Organization</span>: Improves readability and maintainability</li>
+                    <li><span class="highlight">Debugging</span>: Easier to test and debug individual functions</li>
+                </ul>
+
+                <h3>Components of a Function</h3>
+                <ul>
+                    <li><strong>Prototype</strong>: Declaration that specifies function name, return type, and parameters</li>
+                    <li><strong>Function Definition</strong>: Actual implementation of the function</li>
+                    <li><strong>Function Call</strong>: Invoking the function with actual arguments</li>
+                    <li><strong>Return Statement</strong>: Returns value from function (void functions don't return)</li>
+                </ul>
+
+                <h3>Types of Functions</h3>
+                <ul>
+                    <li><strong>Library Functions</strong>: Predefined functions (e.g., printf(), scanf())</li>
+                    <li><strong>User-Defined Functions</strong>: Functions created by programmers</li>
+                </ul>
+
+                <h3>Passing Arguments</h3>
+                <h4>Call By Value</h4>
+                <p>Original values are not modified - only copies are passed.</p>
+                
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+void modifyValue(int x) {
+    x = x * 2;
+    printf("Inside function: %d\n", x);
+}
+
+int main() {
+    int num = 5;
+    modifyValue(num);
+    printf("Outside function: %d\n", num);
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h4>Call By Reference</h4>
+                <p>Addresses are passed, allowing modification of original values.</p>
+                
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+void modifyReference(int *x) {
+    *x = *x * 2;
+    printf("Inside function: %d\n", *x);
+}
+
+int main() {
+    int num = 5;
+    modifyReference(&num);
+    printf("Outside function: %d\n", num);
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h3>Variable Scope</h3>
+                <ul>
+                    <li><strong>Local Variables</strong>: Declared inside a function, accessible only within that function</li>
+                    <li><strong>Global Variables</strong>: Declared outside all functions, accessible throughout the program</li>
+                </ul>
+
+                <h3>Storage Classes</h3>
+                <ul>
+                    <li><strong>Automatic (auto)</strong>: Default, local scope, created/destroyed with function calls</li>
+                    <li><strong>External (extern)</strong>: Global variables accessible across files</li>
+                    <li><strong>Static</strong>: Preserves value between function calls</li>
+                    <li><strong>Register</strong>: Suggests storing variable in CPU register for faster access</li>
+                </ul>
+
+                <h3>Function with Array Example</h3>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+// Function to calculate average of array elements
+float calculateAverage(int arr[], int size) {
+    int sum = 0;
+    for(int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    return (float)sum / size;
+}
+
+int main() {
+    int numbers[] = {10, 20, 30, 40, 50};
+    int size = sizeof(numbers) / sizeof(numbers[0]);
+    
+    float avg = calculateAverage(numbers, size);
+    printf("Average: %.2f\n", avg);
+    
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h3>Recursive Functions</h3>
+                <p>Functions that call themselves to solve problems by breaking them into smaller sub-problems.</p>
+
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+// Recursive function to calculate factorial
+unsigned long long factorial(int n) {
+    if (n == 0 || n == 1) {
+        return 1; // Base case
+    } else {
+        return n * factorial(n - 1); // Recursive call
+    }
+}
+
+int main() {
+    int num = 5;
+    printf("Factorial of %d is %llu\n", num, factorial(num));
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <div class="tip-box">
+                    <h4>Advantages of Recursion</h4>
+                    <ul>
+                        <li>Elegant solution for problems with recursive nature</li>
+                        <li>Reduces code complexity for certain algorithms</li>
+                        <li>Easier to implement for tree/graph traversals</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>Disadvantages of Recursion</h4>
+                    <ul>
+                        <li>Higher memory usage due to call stack</li>
+                        <li>Risk of stack overflow for deep recursion</li>
+                        <li>Generally slower than iterative solutions</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Structure and Union Section -->
+            <section id="structure-union" class="section">
+                <h2>Structure and Union in C</h2>
+
+                <div class="image-container">
+                    <img src="https://placehold.co/800x400" alt="Comparison diagram showing memory allocation differences between structures and unions in C programming" />
+                    <figcaption>Memory Allocation: Structure vs Union</figcaption>
+                </div>
+
+                <h3>Structure: Introduction and Syntax</h3>
+                <p>A structure is a user-defined data type that groups related variables of different data types.</p>
+
+                <div class="code-block">
+                    <pre><code class="language-c">
+// Structure declaration
+struct Student {
+    int roll_no;
+    char name[50];
+    float marks;
+    char grade;
+};
+
+// Structure variable declaration
+struct Student student1;
+                    </code></pre>
+                </div>
+
+                <h3>Structure Size</h3>
+                <p>The size of a structure is the sum of sizes of all its members, plus padding for alignment.</p>
+
+                <h3>Accessing Structure Members</h3>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+struct Student {
+    int roll_no;
+    char name[50];
+    float marks;
+};
+
+int main() {
+    struct Student s1;
+    
+    s1.roll_no = 101;
+    strcpy(s1.name, "John Doe");
+    s1.marks = 85.5;
+    
+    printf("Roll No: %d\n", s1.roll_no);
+    printf("Name: %s\n", s1.name);
+    printf("Marks: %.2f\n", s1.marks);
+    
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h3>Nested Structure</h3>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+struct Address {
+    char city[50];
+    char state[50];
+    int pincode;
+};
+
+struct Employee {
+    int emp_id;
+    char name[50];
+    struct Address addr; // Nested structure
+    float salary;
+};
+
+int main() {
+    struct Employee emp1 = {
+        1001,
+        "Alice Smith",
+        {"New York", "NY", 10001},
+        75000.00
+    };
+    
+    printf("Employee: %s\n", emp1.name);
+    printf("City: %s\n", emp1.addr.city);
+    
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h3>Array of Structures</h3>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+struct Book {
+    int id;
+    char title[100];
+    char author[50];
+    float price;
+};
+
+int main() {
+    struct Book library[3];
+    
+    // Input books
+    for(int i = 0; i < 3; i++) {
+        printf("Enter book %d details:\n", i+1);
+        printf("ID: "); scanf("%d", &library[i].id);
+        printf("Title: "); scanf("%s", library[i].title);
+        printf("Author: "); scanf("%s", library[i].author);
+        printf("Price: "); scanf("%f", &library[i].price);
+    }
+    
+    // Display books
+    printf("\nLibrary Books:\n");
+    for(int i = 0; i < 3; i++) {
+        printf("Book %d: %s by %s ($%.2f)\n", 
+               library[i].id, library[i].title, 
+               library[i].author, library[i].price);
+    }
+    
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h3>Passing Structure to Function</h3>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+struct Point {
+    int x;
+    int y;
+};
+
+// Function to display point
+void displayPoint(struct Point p) {
+    printf("Point coordinates: (%d, %d)\n", p.x, p.y);
+}
+
+// Function to modify point (using pointer)
+void modifyPoint(struct Point *p, int newX, int newY) {
+    p->x = newX;
+    p->y = newY;
+}
+
+int main() {
+    struct Point pt = {10, 20};
+    
+    displayPoint(pt);
+    modifyPoint(&pt, 30, 40);
+    displayPoint(pt);
+    
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h3>Union: Introduction and Syntax</h3>
+                <p>A union is similar to a structure but all members share the same memory location.</p>
+
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+union Data {
+    int i;
+    float f;
+    char str[20];
+};
+
+int main() {
+    union Data data;
+    
+    data.i = 10;
+    printf("data.i: %d\n", data.i);
+    
+    data.f = 220.5;
+    printf("data.f: %.2f\n", data.f);
+    
+    // Note: Only one member can contain a value at a time
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h3>Comparison between Structure and Union</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Structure</th>
+                            <th>Union</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Memory Allocation</td>
+                            <td>Each member has separate memory</td>
+                            <td>All members share same memory</td>
+                        </tr>
+                        <tr>
+                            <td>Memory Size</td>
+                            <td>Sum of all members + padding</td>
+                            <td>Size of largest member</td>
+                        </tr>
+                        <tr>
+                            <td>Member Access</td>
+                            <td>All members can be accessed anytime</td>
+                            <td>Only one member active at a time</td>
+                        </tr>
+                        <tr>
+                            <td>Use Case</td>
+                            <td>Group related data</td>
+                            <td>Save memory, type conversion</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Pointers Section -->
+            <section id="pointers" class="section">
+                <h2>Pointers in C Programming</h2>
+
+                <div class="image-container">
+                    <img src="https://placehold.co/800x400" alt="Visual explanation of pointer concepts showing memory addresses, dereferencing, and pointer arithmetic operations" />
+                    <figcaption>Pointer Concepts and Memory Management</figcaption>
+                </div>
+
+                <h3>Introduction and Syntax</h3>
+                <p>A pointer is a variable that stores the memory address of another variable.</p>
+
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    int var = 10;
+    int *ptr; // Pointer declaration
+    
+    ptr = &var; // Assign address of var to pointer
+    
+    printf("Value of var: %d\n", var);
+    printf("Address of var: %p\n", &var);
+    printf("Value of ptr: %p\n", ptr);
+    printf("Value pointed by ptr: %d\n", *ptr);
+    
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h3>Usage and Working</h3>
+                <ul>
+                    <li><strong>&</strong>: Address of operator</li>
+                    <li><strong>*</strong>: Dereference operator (value at address)</li>
+                    <li>Pointers enable dynamic memory allocation</li>
+                    <li>Used for array manipulation and function arguments</li>
+                </ul>
+
+                <h3>Concept of Value and Address</h3>
+                <p>Every variable has both a value and a memory address where it's stored.</p>
+
+                <h3>Declaration and Initialization</h3>
+                <div class="code-block">
+                    <pre><code class="language-c">
+int *ptr;        // Pointer to integer
+float *fptr;     // Pointer to float
+char *cptr;      // Pointer to character
+int **pptr;      // Pointer to pointer to integer
+
+// Initialization
+int x = 5;
+int *ptr = &x;   // ptr now points to x
+                    </code></pre>
+                </div>
+
+                <h3>Pointer and Function Example</h3>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+// Function using pointers
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int x = 10, y = 20;
+    
+    printf("Before swap: x = %d, y = %d\n", x, y);
+    swap(&x, &y);
+    printf("After swap: x = %d, y = %d\n", x, y);
+    
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h3>Call by Reference Example</h3>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+void modifyArray(int *arr, int size) {
+    for(int i = 0; i < size; i++) {
+        arr[i] = arr[i] * 2; // Modify original array
+    }
+}
+
+void printArray(int *arr, int size) {
+    for(int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int numbers[] = {1, 2, 3, 4, 5};
+    int size = sizeof(numbers) / sizeof(numbers[0]);
+    
+    printf("Original array: ");
+    printArray(numbers, size);
+    
+    modifyArray(numbers, size);
+    
+    printf("Modified array: ");
+    printArray(numbers, size);
+    
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h3>Comparison: Call by Value vs Call by Reference</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Call by Value</th>
+                            <th>Call by Reference</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Parameter Passing</td>
+                            <td>Copy of value is passed</td>
+                            <td>Address/reference is passed</td>
+                        </tr>
+                        <tr>
+                            <td>Memory Usage</td>
+                            <td>More (creates copies)</td>
+                            <td>Less (uses references)</td>
+                        </tr>
+                        <tr>
+                            <td>Original Value</td>
+                            <td>Not modified</td>
+                            <td>Can be modified</td>
+                        </tr>
+                        <tr>
+                            <td>Use Case</td>
+                            <td>When original shouldn't change</td>
+                            <td>When modification is needed</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Pointer with Arrays Example</h3>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int *ptr = arr; // ptr points to first element
+    
+    printf("Array elements using pointer:\n");
+    for(int i = 0; i < 5; i++) {
+        printf("arr[%d] = %d\n", i, *(ptr + i));
+    }
+    
+    printf("\nArray elements using pointer arithmetic:\n");
+    for(int i = 0; i < 5; i++) {
+        printf("*(arr + %d) = %d\n", i, *(arr + i));
+    }
+    
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <div class="tip-box">
+                    <h4>Advantages of Pointers</h4>
+                    <ul>
+                        <li>Efficient array handling</li>
+                        <li>Dynamic memory allocation</li>
+                        <li>Function parameter passing</li>
+                        <li>Data structures implementation</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>Disadvantages of Pointers</h4>
+                    <ul>
+                        <li>Complex to understand and use</li>
+                        <li>Risk of memory leaks</li>
+                        <li>Dangling pointer issues</li>
+                        <li>Security vulnerabilities if misused</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- File Handling Section -->
+            <section id="file-handling" class="section">
+                <h2>File Handling in C</h2>
+
+                <div class="image-container">
+                    <img src="https://placehold.co/800x400" alt="File handling workflow diagram showing file operations from opening to closing with different modes and functions in C programming" />
+                    <figcaption>File Handling Workflow and Operations</figcaption>
+                </div>
+
+                <h3>Concept of Data File</h3>
+                <p>A data file is a collection of related records stored on secondary storage.</p>
+
+                <h3>Need for File Handling</h3>
+                <ul>
+                    <li>Permanent data storage</li>
+                    <li>Data sharing between programs</li>
+                    <li>Large data handling</li>
+                    <li>Backup and recovery</li>
+                </ul>
+
+                <h3>Sequential and Random Files</h3>
+                <ul>
+                    <li><strong>Sequential Access</strong>: Data accessed in sequence</li>
+                    <li><strong>Random Access</strong>: Direct access to any position</li>
+                </ul>
+
+                <h3>File Handling Functions</h3>
+
+                <h4>fopen() and fclose()</h4>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file;
+    
+    // Open file for writing
+    file = fopen("example.txt", "w");
+    if (file == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+    
+    // File operations here
+    
+    fclose(file); // Close file
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h4>getc() and putc()</h4>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("test.txt", "w+");
+    if (file == NULL) return 1;
+    
+    // Write characters
+    putc('A', file);
+    putc('B', file);
+    
+    rewind(file); // Go to beginning
+    
+    // Read characters
+    printf("First char: %c\n", getc(file));
+    printf("Second char: %c\n", getc(file));
+    
+    fclose(file);
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h4>fprintf() and fscanf()</h4>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("data.txt", "w+");
+    if (file == NULL) return 1;
+    
+    // Write formatted data
+    fprintf(file, "Name: %s, Age: %d\n", "John", 25);
+    
+    rewind(file);
+    
+    // Read formatted data
+    char name[50];
+    int age;
+    fscanf(file, "Name: %s, Age: %d", name, &age);
+    
+    printf("Read: %s, %d\n", name, age);
+    
+    fclose(file);
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h4>getw() and putw()</h4>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("numbers.dat", "wb+");
+    if (file == NULL) return 1;
+    
+    // Write integers
+    putw(100, file);
+    putw(200, file);
+    
+    rewind(file);
+    
+    // Read integers
+    printf("First: %d\n", getw(file));
+    printf("Second: %d\n", getw(file));
+    
+    fclose(file);
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h4>fgets() and fputs()</h4>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("text.txt", "w+");
+    if (file == NULL) return 1;
+    
+    // Write string
+    fputs("Hello World!\n", file);
+    fputs("C Programming\n", file);
+    
+    rewind(file);
+    
+    // Read strings
+    char buffer[100];
+    while (fgets(buffer, sizeof(buffer), file) != NULL) {
+        printf("%s", buffer);
+    }
+    
+    fclose(file);
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h4>fread() and fwrite()</h4>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+struct Student {
+    int id;
+    char name[50];
+    float marks;
+};
+
+int main() {
+    FILE *file = fopen("students.dat", "wb+");
+    if (file == NULL) return 1;
+    
+    struct Student s1 = {101, "Alice", 85.5};
+    struct Student s2 = {102, "Bob", 90.0};
+    
+    // Write structures
+    fwrite(&s1, sizeof(struct Student), 1, file);
+    fwrite(&s2, sizeof(struct Student), 1, file);
+    
+    rewind(file);
+    
+    // Read structures
+    struct Student read_s;
+    while (fread(&read_s, sizeof(struct Student), 1, file)) {
+        printf("ID: %d, Name: %s, Marks: %.2f\n", 
+               read_s.id, read_s.name, read_s.marks);
+    }
+    
+    fclose(file);
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h4>remove() and rename()</h4>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    // Create a file first
+    FILE *file = fopen("temp.txt", "w");
+    if (file) {
+        fputs("Temporary content", file);
+        fclose(file);
+    }
+    
+    // Rename file
+    if (rename("temp.txt", "newfile.txt") == 0) {
+        printf("File renamed successfully\n");
+    } else {
+        printf("Error renaming file\n");
+    }
+    
+    // Remove file
+    if (remove("newfile.txt") == 0) {
+        printf("File removed successfully\n");
+    } else {
+        printf("Error removing file\n");
+    }
+    
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h3>Random Access Functions</h3>
+
+                <h4>fseek()</h4>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("data.txt", "w+");
+    if (file == NULL) return 1;
+    
+    fputs("Hello World! This is a test file.", file);
+    
+    // Move to position 6
+    fseek(file, 6, SEEK_SET);
+    printf("Character at position 6: %c\n", getc(file));
+    
+    // Move to end - 5
+    fseek(file, -5, SEEK_END);
+    printf("Last 5 chars: ");
+    for(int i = 0; i < 5; i++) {
+        printf("%c", getc(file));
+    }
+    printf("\n");
+    
+    fclose(file);
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h4>rewind()</h4>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("test.txt", "w+");
+    if (file == NULL) return 1;
+    
+    fputs("First line\n", file);
+    fputs("Second line\n", file);
+    
+    // Go to beginning
+    rewind(file);
+    
+    char buffer[100];
+    while (fgets(buffer, sizeof(buffer), file)) {
+        printf("%s", buffer);
+    }
+    
+    fclose(file);
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h4>ftell()</h4>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("example.txt", "w+");
+    if (file == NULL) return 1;
+    
+    fputs("This is a sample text.", file);
+    
+    printf("File position after writing: %ld\n", ftell(file));
+    
+    rewind(file);
+    printf("File position after rewind: %ld\n", ftell(file));
+    
+    fseek(file, 5, SEEK_SET);
+    printf("File position after fseek: %ld\n", ftell(file));
+    
+    fclose(file);
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h3>File Opening Modes</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Mode</th>
+                            <th>Description</th>
+                            <th>File Exists</th>
+                            <th>File Doesn't Exist</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>r</td>
+                            <td>Read</td>
+                            <td>Opens for reading</td>
+                            <td>Error</td>
+                        </tr>
+                        <tr>
+                            <td>r+</td>
+                            <td>Read/Write</td>
+                            <td>Opens for both</td>
+                            <td>Error</td>
+                        </tr>
+                        <tr>
+                            <td>w</td>
+                            <td>Write</td>
+                            <td>Truncates to zero</td>
+                            <td>Creates new</td>
+                        </tr>
+                        <tr>
+                            <td>w+</td>
+                            <td>Write/Read</td>
+                            <td>Truncates to zero</td>
+                            <td>Creates new</td>
+                        </tr>
+                        <tr>
+                            <td>a</td>
+                            <td>Append</td>
+                            <td>Appends to end</td>
+                            <td>Creates new</td>
+                        </tr>
+                        <tr>
+                            <td>a+</td>
+                            <td>Append/Read</td>
+                            <td>Appends to end</td>
+                            <td>Creates new</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Steps to Work with File in C</h3>
+                <ol>
+                    <li>Define file pointer: <code>FILE *file;</code></li>
+                    <li>Open file with required mode: <code>file = fopen("filename", "mode");</code></li>
+                    <li>Perform read/write/append operations</li>
+                    <li>Close the file: <code>fclose(file);</code></li>
+                </ol>
+
+                <h3>Reading Data from Files</h3>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("input.txt", "r");
+    if (file == NULL) {
+        printf("Cannot open file\n");
+        return 1;
+    }
+    
+    char ch;
+    printf("File content:\n");
+    while ((ch = fgetc(file)) != EOF) {
+        printf("%c", ch);
+    }
+    
+    fclose(file);
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h3>Writing Data to Files</h3>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("output.txt", "w");
+    if (file == NULL) {
+        printf("Cannot create file\n");
+        return 1;
+    }
+    
+    fprintf(file, "This is line 1\n");
+    fprintf(file, "This is line 2\n");
+    fprintf(file, "Number: %d\n", 42);
+    
+    fclose(file);
+    printf("Data written successfully\n");
+    
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h3>Appending Data to Files</h3>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("log.txt", "a");
+    if (file == NULL) {
+        printf("Cannot open file\n");
+        return 1;
+    }
+    
+    fprintf(file, "New log entry: %s\n", "User logged in");
+    fprintf(file, "Timestamp: %s\n", "2024-01-15 10:30:00");
+    
+    fclose(file);
+    printf("Data appended successfully\n");
+    
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h3>End of File (EOF)</h3>
+                <p>EOF is a constant that indicates the end of a file has been reached.</p>
+                
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("data.txt", "r");
+    if (file == NULL) return 1;
+    
+    int ch;
+    while ((ch = fgetc(file)) != EOF) {
+        putchar(ch);
+    }
+    
+    if (feof(file)) {
+        printf("\nEnd of file reached\n");
+    }
+    
+    fclose(file);
+    return 0;
+}
+                    </code></pre>
+                </div>
+            </section>
+
+            <!-- Typedef Section -->
+            <section id="typedef" class="section">
+                <h2>Typedef Keyword in C</h2>
+
+                <div class="image-container">
+                    <img src="https://placehold.co/800x400" alt="Visual representation of typedef usage showing how it creates aliases for data types and improves code readability in C programming" />
+                    <figcaption>Typedef: Creating Type Aliases for Better Code</figcaption>
+                </div>
+
+                <h3>Introduction</h3>
+                <p>The <code>typedef</code> keyword is used to create an alias name for existing data types. It improves code readability and portability.</p>
+
+                <h3>Syntax</h3>
+                <div class="code-block">
+                    <pre><code class="language-c">
+typedef existing_type new_type_name;
+                    </code></pre>
+                </div>
+
+                <h3>Basic Usage Examples</h3>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+// Basic type aliasing
+typedef unsigned int uint;
+typedef float real;
+
+// Structure with typedef
+typedef struct {
+    int x;
+    int y;
+} Point;
+
+// Function pointer typedef
+typedef int (*MathFunc)(int, int);
+
+int add(int a, int b) { return a + b; }
+int multiply(int a, int b) { return a * b; }
+
+int main() {
+    // Using basic typedef
+    uint count = 10;
+    real price = 99.99;
+    printf("Count: %u, Price: %.2f\n", count, price);
+    
+    // Using structure typedef
+    Point p1 = {10, 20};
+    Point p2 = {30, 40};
+    printf("Point 1: (%d, %d)\n", p1.x, p1.y);
+    printf("Point 2: (%d, %d)\n", p2.x, p2.y);
+    
+    // Using function pointer typedef
+    MathFunc operation = add;
+    printf("Addition: %d\n", operation(5, 3));
+    
+    operation = multiply;
+    printf("Multiplication: %d\n", operation(5, 3));
+    
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h3>Typedef with Arrays</h3>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+// Typedef for array types
+typedef int IntArray[5];
+typedef char String[50];
+
+int main() {
+    IntArray numbers = {1, 2, 3, 4, 5};
+    String name = "John Doe";
+    
+    printf("Numbers: ");
+    for(int i = 0; i < 5; i++) {
+        printf("%d ", numbers[i]);
+    }
+    printf("\n");
+    
+    printf("Name: %s\n", name);
+    
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h3>Typedef with Pointers</h3>
+                <div class="code-block">
+                    <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+// Typedef for pointer types
+typedef int* IntPtr;
+typedef char* StringPtr;
+
+int main() {
+    IntPtr numPtr = (int*)malloc(sizeof(int));
+    *numPtr = 42;
+    
+    StringPtr namePtr = "Hello World";
+    
+    printf("Number: %d\n", *numPtr);
+    printf("String: %s\n", namePtr);
+    
+    free(numPtr);
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <h3>Benefits of Using Typedef</h3>
+                <ul>
+                    <li><strong>Readability</strong>: Makes code more understandable</li>
+                    <li><strong>Portability</strong>: Easier to change underlying types</li>
+                    <li><strong>Abstraction</strong>: Hides implementation details</li>
+                    <li><strong>Consistency</strong>: Ensures consistent type usage</li>
+                </ul>
+
+                <div class="tip-box">
+                    <h4>Best Practices with Typedef</h4>
+                    <ul>
+                        <li>Use descriptive names for type aliases</li>
+                        <li>Place typedefs in header files for reuse</li>
+                        <li>Use uppercase for type names (convention)</li>
+                        <li>Document the purpose of custom types</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>© 2024 C Programming Unit 4 Complete Reference Guide</p>
+            <p>Created with educational purpose - All concepts covered with practical examples</p>
+        </footer>
+    </div>
+
+    <!-- Prism.js for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+    
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Section reveal animation
+        const sections = document.querySelectorAll('.section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initialize all sections as visible after load
+        window.addEventListener('load', () => {
+            sections.forEach(section => {
+                section.classList.add('visible');
+            });
+        });
+    </script>
+</body>
+</html>
+
 
